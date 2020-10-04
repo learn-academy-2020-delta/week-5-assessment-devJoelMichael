@@ -1,6 +1,7 @@
 // ASSESSMENT 5: JavaScript Coding Practical Questions
 
 // --------------------1) Create a function that takes in a string and returns a coded message. The coded message converts 'a' to 4, 'e' to 3, 'i' to 1, and 'o' to 0.
+
 console.log("FIRST: \n")
 
 var secretCodeWord1 = "lackadaisical"
@@ -8,31 +9,44 @@ var secretCodeWord1 = "lackadaisical"
 var secretCodeWord2 = "gobbledygook"
 // Expected output: "g0bbl3dyg00k"
 
-const cssr = (array) => {
-  return array.filter(vowel => {
-    vowel.split("")
-    if (vowel.toLowerCase().includes("a")) {
-      return vowel.replace("a", 4)
-    } else if (vowel.toLowerCase().includes("e")) {
-      return vowel.replace("e", 3)
-    } else if (vowel.toLowerCase().includes("i")) {
-      return vowel.replace("i", 3)
-    } else if (vowel.toLowerCase().includes("o")) {
-      return vowel.replace("o", 0)
-    } else {
-      return "NOT FOR YOU AMERICAN SCUM!"
-    }
-  })
+// ########################### ORIGINAL ##################################
+
+const cssr = (str) => {
+  console.log("What is str:", str)
+  return str
+    .split("") //. chaining 
+    .map(letter => {
+      if (letter === 'a') {
+        return '4'
+      } else if (letter === 'e') {
+        return '3'
+      } else if (letter === 'i') {
+        return '1'
+      } else if (letter === 'o') {
+        return '0'
+      } else {
+        return letter
+      }
+    })
+    .join("")
+  // return arr.map = arr.join("")
 }
+console.log("part1: \n")
+console.log("answer:", cssr(secretCodeWord1), "\n")
+console.log("answer:", cssr(secretCodeWord2), "\n")
 
-console.log(cssr(secretCodeWord1), "\n")
-console.log(cssr(secretCodeWord2),"\n")
+// ############ CONDENSED VERSION ####################
 
-
-// first create a function that will take in a string
-// the string will need to be broken down into letters (probably use split("") and maybe at some point slice(""))
-// use a method, either for loop or map or filter, to look through the broken up string (each letter at a time) and find all the vowels
-// Once the method has run and we find all the vowels we need to replace those vowels with their corresponding numbers (probably an if/else if statement or that one with : ? )
+const cssrz = (str) => {
+  console.log("What is str:", str)
+  return str.replace(/\a/g, '4')
+    .replace(/\e/g, '3')
+    .replace(/\i/g, '1')
+    .replace(/\o/g, '0')
+}
+console.log("part2: \n")
+console.log("answer:", cssrz(secretCodeWord1), "\n")
+console.log("answer:", cssrz(secretCodeWord2), "\n")
 
 
 // --------------------2) Create a function that takes in an array and returns all the words that contain the letter a.
@@ -47,22 +61,17 @@ const sweetAzz = (array) => {
   return array.filter(word => {
     // console.log("1:, \n", word)
     word.split("")
-    // console.log("2:, \n", aze)
     if (word.toLowerCase().includes("a") || word.toUpperCase().includes("A")) {
       // console.log("3:, \n", word)
-      return word
+      return true
     } else if (word.toLowerCase().includes(!"a") || word.toUpperCase().includes(!"A")) {
-      return;
+      return false
     }
   }) 
 } 
 
 console.log(sweetAzz(arrayOfWords))
 
-
-
-// use a method, either for loop or map or filter, to look through the broken up string (each letter at a time) and find all the vowels
-// Once the method has run and we find all the vowels we need to replace those vowels with their corresponding numbers (probably an if/else if statement or that one with : ? )
 
 // --------------------3) Create a function that takes in an array of 5 numbers and determines whether or not the array is a “full house”. A full house is exactly one pair and one three of a kind.
 console.log("THIRD: \n")
@@ -90,7 +99,4 @@ console.log(fullHouse(hand1), "\n")
 console.log(fullHouse(hand2), "\n")
 console.log(fullHouse(hand3), "\n")
 
-// first we build a function * i bet you love reading that three times lol *
-// then we will use this function to see wether the array has a "full house". 
-// to do this we will make a method that checks if there is 3 of a character and 2 of a character, if this is the case we get true. If this is not the case we get false. (if / else).
 
